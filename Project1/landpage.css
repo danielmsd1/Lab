@@ -1,0 +1,13 @@
+#header{
+  align-items: center;
+  flex: auto;
+  align-content: center;
+  text-align: center;
+  background-color:LIGHTBLUE;
+}
+.flex-container
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
