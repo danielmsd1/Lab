@@ -76,7 +76,7 @@ if (isset($_POST['submit']))
             <td><input type="password" name="password" placeholder="Password" value=""> </td>
           </tr>
           <tr>
-            <td><button class="btn btn-primary" type="submit" name="submit">SAVE</button></td>
+            <td><button class="btn btn-primary" type="submit" name="submit"></button>SAVE</td>
           </tr>
           <tr>
             <td><button class="btn btn-danger" type="button" name="btndelete">DELETE</button></td>
@@ -91,7 +91,7 @@ if (isset($_POST['submit']))
             <td><button class="btn btn-outline-primary" type="button" name="button">BACK</button></td>
           </tr>
           <tr>
-            <td> <a href="login.php">Login here</a> </td>
+            <td> <a href="login.php" </td>
           </tr>
         </table>
 
