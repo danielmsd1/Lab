@@ -19,11 +19,6 @@ if (isset($_POST['submit']))
     echo "An error occured";
   }
 }
-  $checkrecords = $_POST['btncheck'];
-if ($checkrecords) {
-  $user->readAll();
-}
-
  ?>
  <!DOCTYPE html>
  <html lang="en" dir="ltr">
@@ -50,8 +45,6 @@ if ($checkrecords) {
           <button class="btn btn-primary" type="button" name="btncheck">CHECK RECORDS</button> <br>
           <button class="btn btn-outline-primary" type="button" name="btnnext">NEXT</button> <br>
           <button class="btn btn-outline-primary" type="button" name="button">BACK</button>
-
        </form>
-
    </body>
  </html>
