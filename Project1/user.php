@@ -1,5 +1,6 @@
 <?php
 include "Crud.php";
+include "authenticator.php";
 
 /**
  * This implements the Crud interface; Crud.php
@@ -12,11 +13,47 @@ class User implements Crud
   private $lastname;
   private $cityname;
 
-  function __construct($firstname,$lastname,$cityname)
+  private $username;
+  private $password;
+
+  function __construct($firstname,$lastname,$cityname,$username,$password)
   {
     $this->firstname = $firstname;
     $this->lastname = $lastname;
     $this->cityname = $cityname;
+    $this->username = $username;
+    $this->password = $password;
+  }
+
+  /**
+  *PHP does not allow multiple constructors
+  *We make a static method to access it with a class rather than an object
+  *static constructor
+  */
+  public static function create()
+  {
+    $instance = new self();
+    return $instance;
+  }
+  //username setter
+  public function setUsername($username)
+  {
+    $this->username = $username;
+  }
+  //username getter
+  public function getUsername()
+  {
+    return $this->username;
+  }
+  //password setter
+  public function setPassword($password)
+  {
+    $this->password = $password;
+  }
+  //password getter
+  public function getPassword()
+  {
+    return $this->password;
   }
 
   public function setUserid($userid)
@@ -34,8 +71,11 @@ class User implements Crud
     $fn = $this->firstname;
     $ln = $this->lastname;
     $city = $this->cityname;
+    $uname = $this->username;
+    $this->hashPassword();
+    $pass = $this->password;
     $aVar = mysqli_connect('localhost','root','','ICS3104');
-    $res = mysqli_query($aVar,"INSERT INTO user(first_name,last_name,user_city) VALUES('$fn','$ln','$city')")or die(mysqli_error());
+    $res = mysqli_query($aVar,"INSERT INTO user(first_name,last_name,user_city,username,password) VALUES('$fn','$ln','$city','$uname','$pass')")or die(mysqli_error());
     return $res;
   }
 
@@ -82,15 +122,72 @@ class User implements Crud
     return null;
   }
 
+  public function validateForm()
+  {
+    //Return true if the values are not Empty
+    $fn = $this->firstname;
+    $ln = $this->lastname;
+    $city = $this->city;
 
+    if ($fn == "" || $ln == "" || $city == "")
+    {
+      return false;
+    }
+    return true;
+  }
 
+  public function createFormErrorSessions()
+  {
+    session_start();
+    $_SESSION['form_errors'] = "All fields are required";
+  }
 
+  public function hashPassword()
+  {
+    //inbuilt function password_hash hashes our password
+    $this->password = password_hash($this->password,PASSWORD_DEFAULT);
+  }
+  public function isPasswordCorrect()
+  {
+    $con = new DBConnector();
+    $found = false;
+    $res = mysqli_query("SELECT * FROM user") or die("Error" . mysqli_error());
 
+    while($row=mysqli_fetch_array($res))
+    {
+      if (password_verify($this->getPassword(),$row['password']) && $this->getUsername() == $row['username']) {
+          $found = true;
 
+      }
+    }
+    //close the database connection
+    $con->closeDatabase();
+    return $found;
+  }
+
+  public function login()
+  {
+    if ($this->isPasswordCorrect()) {
+      //password is correct, so we open the protected page
+      header("Location:private_page.php");
+    }
+  }
+
+  public function createUserSession()
+  {
+    session_start();
+    $_SESSION['username'] = $this->getUsername();
+  }
+
+  public function logout()
+  {
+    session_start();
+    unset($_SESSION['username']);
+    session_destroy();
+    header("Location:landpage.php");
+  }
 
 
 }
-
-
 
  ?>

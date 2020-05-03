@@ -11,5 +11,9 @@
     public function update();
     public function removeOne();
     public function removeAll();
+
+    //addition of 2 methods for the second lab
+    public function validateForm();
+    public function createFormErrorSessions();
   }
  ?>
