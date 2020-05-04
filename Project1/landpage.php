@@ -8,8 +8,10 @@ if (isset($_POST['submit']))
   $firstname = $_POST['firstname'];
   $lastname = $_POST['lastname'];
   $city = $_POST['location'];
+  $username = $_POST['username'];
+  $password = $_POST['password'];
 
-  $user = new User($firstname,$lastname,$city);
+  $user = new User($firstname,$lastname,$city,$username,$password);
   if (!$user->validateForm())
   {
     $user->createFormErrorSessions();
@@ -76,7 +78,7 @@ if (isset($_POST['submit']))
             <td><input type="password" name="password" placeholder="Password" value=""> </td>
           </tr>
           <tr>
-            <td><button class="btn btn-primary" type="submit" name="submit"></button>SAVE</td>
+            <td><button class="btn btn-primary" type="submit" name="submit">SAVE</button></td>
           </tr>
           <tr>
             <td><button class="btn btn-danger" type="button" name="btndelete">DELETE</button></td>
@@ -88,7 +90,7 @@ if (isset($_POST['submit']))
             <td><button class="btn btn-outline-primary" type="button" name="btnnext">NEXT</button></td>
           </tr>
           <tr>
-            <td><button class="btn btn-outline-primary" type="button" name="button">BACK</button></td>
+            <td><button class="btn btn-outline-primary" type="button" name="buttonback">BACK</button></td>
           </tr>
           <tr>
             <td> <a href="login.php" </td>

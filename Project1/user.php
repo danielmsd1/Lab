@@ -24,12 +24,6 @@ class User implements Crud
     $this->username = $username;
     $this->password = $password;
   }
-
-  /**
-  *PHP does not allow multiple constructors
-  *We make a static method to access it with a class rather than an object
-  *static constructor
-  */
   public static function create()
   {
     $instance = new self();
