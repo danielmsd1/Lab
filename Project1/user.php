@@ -76,7 +76,7 @@ class User implements Crud
     $res = mysqli_query($aVar,"INSERT INTO user(first_name,last_name,user_city,username,password) VALUES('$fn','$ln','$city','$uname','$pass')")or die(mysqli_error());
     return $res;
   }
-
+//check function and see if firstname and lastname exist;;;;;
   public function readAll()
   {
     $sql = "SELECT first_name, last_name, user_city from  user";
@@ -127,8 +127,10 @@ class User implements Crud
     $fn = $this->firstname;
     $ln = $this->lastname;
     $city = $this->city;
+    $username = $this->username;
+    $password = $this->password;
 
-    if ($fn == "" || $ln == "" || $city == "")
+    if ($fn == "" || $ln == "" || $city == "" || $username == "" || $password == "")
     {
       return false;
     }

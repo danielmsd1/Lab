@@ -8,8 +8,10 @@ if (isset($_POST['submit']))
   $firstname = $_POST['firstname'];
   $lastname = $_POST['lastname'];
   $city = $_POST['city'];
+  $username = $_POST['username'];
+  $password = $_POST['password'];
 
-  $user = new User($firstname,$lastname,$city);
+  $user = new User($firstname,$lastname,$city,$username,$password);
   if (!$user->validateForm())
   {
     $user->createFormErrorSessions();
@@ -77,7 +79,6 @@ if (isset($_POST['submit']))
           </tr>
           <tr>
             <td><button class="btn btn-primary" type="submit" name="submit">SAVE</button></td>
-            <td><button class="btn btn-primary" type="submit" name="submit"></button>SAVE</td>
           </tr>
           <tr>
             <td> <a href="login.php" </td>
