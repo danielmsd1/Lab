@@ -11,16 +11,16 @@ class User implements Crud
   private $userid;
   private $firstname;
   private $lastname;
-  private $cityname;
+  private $city;
 
   private $username;
   private $password;
 
-  function __construct($firstname,$lastname,$cityname,$username,$password)
+  function __construct($firstname,$lastname,$city,$username,$password)
   {
     $this->firstname = $firstname;
     $this->lastname = $lastname;
-    $this->cityname = $cityname;
+    $this->city = $city;
     $this->username = $username;
     $this->password = $password;
   }
@@ -70,7 +70,7 @@ class User implements Crud
   {
     $fn = $this->firstname;
     $ln = $this->lastname;
-    $city = $this->cityname;
+    $city = $this->city;
     $uname = $this->username;
     $this->hashPassword();
     $pass = $this->password;
@@ -89,7 +89,7 @@ class User implements Crud
     {
       while($row = $result->fetch_assoc())
       {
-        echo "firstname: " . $row["first_name"]. " - lastname: " . $row["last_name"]. "- Location" . $row["user_city"]. "<br>";
+        echo "firstname: " . $row["first_name"]. " - lastname: " . $row["last_name"]. "- City" . $row["user_city"]. "<br>";
       }
       } else
       {

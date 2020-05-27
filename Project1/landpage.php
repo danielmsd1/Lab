@@ -7,7 +7,7 @@ if (isset($_POST['submit']))
 {
   $firstname = $_POST['firstname'];
   $lastname = $_POST['lastname'];
-  $city = $_POST['location'];
+  $city = $_POST['city'];
 
   $user = new User($firstname,$lastname,$city);
   if (!$user->validateForm())
@@ -37,6 +37,7 @@ if (isset($_POST['submit']))
      <script type="text/javascript" src="validate.js"></script>
      <title></title>
    </head>
+
    <body>
      <div class="card" id="header">
        <h2>INPUT YOUR DETAILS IN THE FORM</h2>
@@ -59,7 +60,6 @@ if (isset($_POST['submit']))
               </div>
             </td>
           </tr>
-
           <tr>
             <td><input type="text" name="firstname" required placeholder="Firstname" value="">  </td>
           </tr>
@@ -67,7 +67,7 @@ if (isset($_POST['submit']))
             <td><input type="text" name="lastname" placeholder="Lastname" value=""> </td>
           </tr>
           <tr>
-            <td><input type="text" name="location" placeholder="City" value=""> </td>
+            <td><input type="text" name="city" placeholder="City" value=""> </td>
           </tr>
           <tr>
             <td><input type="text" name="username" placeholder="Username" value=""> </td>
@@ -76,14 +76,11 @@ if (isset($_POST['submit']))
             <td><input type="password" name="password" placeholder="Password" value=""> </td>
           </tr>
           <tr>
-<<<<<<< HEAD
             <td><button class="btn btn-primary" type="submit" name="submit">SAVE</button></td>
-=======
             <td><button class="btn btn-primary" type="submit" name="submit"></button>SAVE</td>
           </tr>
           <tr>
             <td> <a href="login.php" </td>
->>>>>>> 13b33528461b87a4fd605152569b58160cc340c1
           </tr>
           <tr>
             <td><button class="btn btn-danger" type="button" name="btndelete">DELETE</button></td>
@@ -97,14 +94,10 @@ if (isset($_POST['submit']))
           <tr>
             <td><button class="btn btn-outline-primary" type="button" name="button">BACK</button></td>
           </tr>
-<<<<<<< HEAD
           <tr>
             <td> <a href="login.php">Login here</a> </td>
           </tr>
-=======
->>>>>>> 13b33528461b87a4fd605152569b58160cc340c1
         </table>
-
        </form>
    </body>
  </html>

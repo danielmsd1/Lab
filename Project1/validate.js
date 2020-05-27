@@ -2,7 +2,7 @@ function validateForm()
 {
   var fname = document.forms["userdetails"]["firstname"].value;
   var lname = document.forms["userdetails"]["lastname"].value;
-  var city = document.forms["userdetails"]["location"].value;
+  var city = document.forms["userdetails"]["city"].value;
 
   //note that userdetails is the name of our forms
 
