@@ -1,3 +1,4 @@
+
 function validateForm()
 {
   var fname = document.forms["userdetails"]["firstname"].value;

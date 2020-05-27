@@ -12,7 +12,6 @@ class User implements Crud
   private $firstname;
   private $lastname;
   private $city;
-
   private $username;
   private $password;
 
@@ -24,7 +23,6 @@ class User implements Crud
     $this->username = $username;
     $this->password = $password;
   }
-
   /**
   *PHP does not allow multiple constructors
   *We make a static method to access it with a class rather than an object
@@ -91,10 +89,11 @@ class User implements Crud
       {
         echo "firstname: " . $row["first_name"]. " - lastname: " . $row["last_name"]. "- City" . $row["user_city"]. "<br>";
       }
-      } else
-      {
-        echo "0 results";
-      }
+    }
+     else
+    {
+      echo "0 results";
+    }
   }
 
   public function readUnique()

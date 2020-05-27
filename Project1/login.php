@@ -3,20 +3,24 @@
   include_once 'user.php';
 
   $con = new DBConnector;
-  if (isset($_POST[btn-login])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $instance = User::create();
-    $instance->setPassword($password);
-    $instance->setUsername($username);
 
-    if ($instance->isPasswordCorrect()) {
-    $instance->login();
-    $con->closeDatabase();
-    //next create a user session
-    $instance->createUserSession();
+  if (isset($_POST[btn-login]))
+  {
+      $username = $_POST['username'];
+      $password = $_POST['password'];
+      $instance = User::create();
+      $instance->setPassword($password);
+      $instance->setUsername($username);
+
+    if ($instance->isPasswordCorrect())
+    {
+      $instance->login();
+      $con->closeDatabase();
+      //next create a user session
+      $instance->createUserSession();
     }
-    else {
+    else
+    {
       $con->closeDatabase();
       header("Location:login.php");
     }
