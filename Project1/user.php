@@ -28,6 +28,7 @@ class User implements Crud
   *We make a static method to access it with a class rather than an object
   *static constructor
   */
+  
   public static function create()
   {
     $instance = new self();
