@@ -7,11 +7,12 @@ if (isset($_POST['submit']))
 {
   $firstname = $_POST['firstname'];
   $lastname = $_POST['lastname'];
-  $city = $_POST['location'];
+  $cityname = $_POST['cityname'];
   $username = $_POST['username'];
   $password = $_POST['password'];
 
-  $user = new User($firstname,$lastname,$city,$username,$password);
+  $user = new User($firstname,$lastname,$cityname,$username,$password);
+
   if (!$user->validateForm())
   {
     $user->createFormErrorSessions();
@@ -69,7 +70,7 @@ if (isset($_POST['submit']))
             <td><input type="text" name="lastname" placeholder="Lastname" value=""> </td>
           </tr>
           <tr>
-            <td><input type="text" name="location" placeholder="City" value=""> </td>
+            <td><input type="text" name="cityname" placeholder="Cityname" value=""> </td>
           </tr>
           <tr>
             <td><input type="text" name="username" placeholder="Username" value=""> </td>

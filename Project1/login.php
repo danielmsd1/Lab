@@ -3,7 +3,8 @@
   include_once 'user.php';
 
   $con = new DBConnector;
-  if (isset($_POST[btn-login])) {
+  if (isset($_POST[btn-login]))
+  {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $instance = User::create();
@@ -17,7 +18,8 @@
     //next create a user session
     $instance->createUserSession();
     }
-    else {
+    else
+    {
       $con->closeDatabase();
       header("Location:login.php");
     }
@@ -33,7 +35,6 @@
    </head>
    <body>
      <form class="" name = "login" action="<?=$_SERVER['PHP_SELF']?>" method="post">
-
        <table align="center">
          <tr>
            <td><input type="text" name="username" placeholder="Username" required value=""> </td>

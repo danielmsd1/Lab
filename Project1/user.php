@@ -64,12 +64,12 @@ class User implements Crud
   {
     $fn = $this->firstname;
     $ln = $this->lastname;
-    $city = $this->cityname;
+    $cityname = $this->cityname;
     $uname = $this->username;
     $this->hashPassword();
     $pass = $this->password;
     $aVar = mysqli_connect('localhost','root','','ICS3104');
-    $res = mysqli_query($aVar,"INSERT INTO user(first_name,last_name,user_city,username,password) VALUES('$fn','$ln','$city','$uname','$pass')")or die(mysqli_error());
+    $res = mysqli_query($aVar,"INSERT INTO user(first_name,last_name,user_city,username,password) VALUES('$fn','$ln','$cityname','$uname','$pass')")or die(mysqli_error());
     return $res;
   }
 
@@ -121,9 +121,9 @@ class User implements Crud
     //Return true if the values are not Empty
     $fn = $this->firstname;
     $ln = $this->lastname;
-    $city = $this->city;
+    $cityname = $this->cityname;
 
-    if ($fn == "" || $ln == "" || $city == "")
+    if ($fn == "" || $ln == "" || $cityname == "")
     {
       return false;
     }
@@ -141,6 +141,7 @@ class User implements Crud
     //inbuilt function password_hash hashes our password
     $this->password = password_hash($this->password,PASSWORD_DEFAULT);
   }
+  
   public function isPasswordCorrect()
   {
     $con = new DBConnector();
@@ -161,7 +162,8 @@ class User implements Crud
 
   public function login()
   {
-    if ($this->isPasswordCorrect()) {
+    if ($this->isPasswordCorrect())
+    {
       //password is correct, so we open the protected page
       header("Location:private_page.php");
     }
@@ -180,8 +182,6 @@ class User implements Crud
     session_destroy();
     header("Location:landpage.php");
   }
-
-
 }
 
  ?>
