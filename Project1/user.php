@@ -23,15 +23,12 @@ class User implements Crud
     $this->username = $username;
     $this->password = $password;
   }
-<<<<<<< HEAD
-=======
   /**
   *PHP does not allow multiple constructors
   *We make a static method to access it with a class rather than an object
   *static constructor
   */
-  
->>>>>>> a8ad71332d32784bb1660c1d4b8c3c122fb3b82d
+
   public static function create()
   {
     $instance = new self();
@@ -72,11 +69,7 @@ class User implements Crud
   {
     $fn = $this->firstname;
     $ln = $this->lastname;
-<<<<<<< HEAD
-    $cityname = $this->cityname;
-=======
     $city = $this->city;
->>>>>>> a8ad71332d32784bb1660c1d4b8c3c122fb3b82d
     $uname = $this->username;
     $this->hashPassword();
     $pass = $this->password;
@@ -134,17 +127,11 @@ class User implements Crud
     //Return true if the values are not Empty
     $fn = $this->firstname;
     $ln = $this->lastname;
-<<<<<<< HEAD
-    $cityname = $this->cityname;
-
-    if ($fn == "" || $ln == "" || $cityname == "")
-=======
     $city = $this->city;
     $username = $this->username;
     $password = $this->password;
 
     if ($fn == "" || $ln == "" || $city == "" || $username == "" || $password == "")
->>>>>>> a8ad71332d32784bb1660c1d4b8c3c122fb3b82d
     {
       return false;
     }
@@ -162,7 +149,7 @@ class User implements Crud
     //inbuilt function password_hash hashes our password
     $this->password = password_hash($this->password,PASSWORD_DEFAULT);
   }
-  
+
   public function isPasswordCorrect()
   {
     $con = new DBConnector();

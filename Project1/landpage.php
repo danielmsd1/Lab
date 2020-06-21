@@ -7,20 +7,11 @@ if (isset($_POST['submit']))
 {
   $firstname = $_POST['firstname'];
   $lastname = $_POST['lastname'];
-<<<<<<< HEAD
-  $cityname = $_POST['cityname'];
-  $username = $_POST['username'];
-  $password = $_POST['password'];
-
-  $user = new User($firstname,$lastname,$cityname,$username,$password);
-
-=======
   $city = $_POST['city'];
   $username = $_POST['username'];
   $password = $_POST['password'];
 
   $user = new User($firstname,$lastname,$city,$username,$password);
->>>>>>> a8ad71332d32784bb1660c1d4b8c3c122fb3b82d
   if (!$user->validateForm())
   {
     $user->createFormErrorSessions();
@@ -78,11 +69,7 @@ if (isset($_POST['submit']))
             <td><input type="text" name="lastname" placeholder="Lastname" value=""> </td>
           </tr>
           <tr>
-<<<<<<< HEAD
-            <td><input type="text" name="cityname" placeholder="Cityname" value=""> </td>
-=======
             <td><input type="text" name="city" placeholder="City" value=""> </td>
->>>>>>> a8ad71332d32784bb1660c1d4b8c3c122fb3b82d
           </tr>
           <tr>
             <td><input type="text" name="username" placeholder="Username" value=""> </td>
@@ -92,12 +79,9 @@ if (isset($_POST['submit']))
           </tr>
           <tr>
             <td><button class="btn btn-primary" type="submit" name="submit">SAVE</button></td>
-<<<<<<< HEAD
-=======
           </tr>
           <tr>
             <td> <a href="login.php" </td>
->>>>>>> a8ad71332d32784bb1660c1d4b8c3c122fb3b82d
           </tr>
           <tr>
             <td><button class="btn btn-danger" type="button" name="btndelete">DELETE</button></td>
