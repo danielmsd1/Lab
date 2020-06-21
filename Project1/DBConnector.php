@@ -13,7 +13,6 @@
         //mysqli_select_db(DB_NAME);
         mysqli_select_db($con, DB_NAME) or die(mysqli_error($con));
     }
-
     public function closeDatabase()
     {
       mysqli_close($this->conn);

@@ -11,19 +11,27 @@ class User implements Crud
   private $userid;
   private $firstname;
   private $lastname;
-  private $cityname;
-
+  private $city;
   private $username;
   private $password;
 
-  function __construct($firstname,$lastname,$cityname,$username,$password)
+  function __construct($firstname,$lastname,$city,$username,$password)
   {
     $this->firstname = $firstname;
     $this->lastname = $lastname;
-    $this->cityname = $cityname;
+    $this->city = $city;
     $this->username = $username;
     $this->password = $password;
   }
+<<<<<<< HEAD
+=======
+  /**
+  *PHP does not allow multiple constructors
+  *We make a static method to access it with a class rather than an object
+  *static constructor
+  */
+  
+>>>>>>> a8ad71332d32784bb1660c1d4b8c3c122fb3b82d
   public static function create()
   {
     $instance = new self();
@@ -64,7 +72,11 @@ class User implements Crud
   {
     $fn = $this->firstname;
     $ln = $this->lastname;
+<<<<<<< HEAD
     $cityname = $this->cityname;
+=======
+    $city = $this->city;
+>>>>>>> a8ad71332d32784bb1660c1d4b8c3c122fb3b82d
     $uname = $this->username;
     $this->hashPassword();
     $pass = $this->password;
@@ -72,7 +84,7 @@ class User implements Crud
     $res = mysqli_query($aVar,"INSERT INTO user(first_name,last_name,user_city,username,password) VALUES('$fn','$ln','$cityname','$uname','$pass')")or die(mysqli_error());
     return $res;
   }
-
+//check function and see if firstname and lastname exist;;;;;
   public function readAll()
   {
     $sql = "SELECT first_name, last_name, user_city from  user";
@@ -83,12 +95,13 @@ class User implements Crud
     {
       while($row = $result->fetch_assoc())
       {
-        echo "firstname: " . $row["first_name"]. " - lastname: " . $row["last_name"]. "- Location" . $row["user_city"]. "<br>";
+        echo "firstname: " . $row["first_name"]. " - lastname: " . $row["last_name"]. "- City" . $row["user_city"]. "<br>";
       }
-      } else
-      {
-        echo "0 results";
-      }
+    }
+     else
+    {
+      echo "0 results";
+    }
   }
 
   public function readUnique()
@@ -121,9 +134,17 @@ class User implements Crud
     //Return true if the values are not Empty
     $fn = $this->firstname;
     $ln = $this->lastname;
+<<<<<<< HEAD
     $cityname = $this->cityname;
 
     if ($fn == "" || $ln == "" || $cityname == "")
+=======
+    $city = $this->city;
+    $username = $this->username;
+    $password = $this->password;
+
+    if ($fn == "" || $ln == "" || $city == "" || $username == "" || $password == "")
+>>>>>>> a8ad71332d32784bb1660c1d4b8c3c122fb3b82d
     {
       return false;
     }
