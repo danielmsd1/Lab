@@ -18,7 +18,9 @@ if (isset($_POST['submit']))
     header("Refresh:0");
     die();
   }
+  $res1 = $user->isUserExist();
   $res = $user->save();
+
 
   if ($res) {
     echo "Save operation was successful";
@@ -28,13 +30,32 @@ if (isset($_POST['submit']))
   }
 }
 
+if(isset($_POST['btncheck']))
+{
+  $sql = "SELECT first_name, last_name, user_city from  user";
+  $aVar = mysqli_connect('localhost','root','','ICS3104');
+  $res = $aVar->query($sql);
+
+  if ($res->num_rows > 0)
+  {
+    while($row = $res->fetch_assoc())
+    {
+      echo "Firstname: " . $row["first_name"]. "  Lastname: " . $row["last_name"]. " City: " . $row["user_city"]. "<br>";
+    }
+  }
+  else
+    {
+      echo "No data found!";
+    }
+}
+
  ?>
  <!DOCTYPE html>
  <html lang="en" dir="ltr">
    <head>
      <meta charset="utf-8">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-     <link rel="stylesheet" href="landpage.css">
+     <link rel="stylesheet" href="lab1.css">
      <link rel="stylesheet" href="validate.css">
      <script type="text/javascript" src="validate.js"></script>
      <title></title>
@@ -83,12 +104,16 @@ if (isset($_POST['submit']))
           <tr>
             <td> <a href="login.php" </td>
           </tr>
+          </form>
+
           <tr>
             <td><button class="btn btn-danger" type="button" name="btndelete">DELETE</button></td>
           </tr>
-          <tr>
-            <td><button class="btn btn-primary" type="button" name="btncheck">CHECK RECORDS</button></td>
-          </tr>
+          <form class="" action="<?=$_SERVER['PHP_SELF']?>" method="post">
+            <tr>
+              <td><button class="btn btn-primary" type="submit" name="btncheck">CHECK RECORDS</button></td>
+            </tr>
+          </form>
           <tr>
             <td><button class="btn btn-outline-primary" type="button" name="btnnext">NEXT</button></td>
           </tr>
@@ -99,6 +124,6 @@ if (isset($_POST['submit']))
             <td> <a href="login.php" </td>
           </tr>
         </table>
-       </form>
+
    </body>
  </html>

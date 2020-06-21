@@ -74,7 +74,7 @@ class User implements Crud
     $this->hashPassword();
     $pass = $this->password;
     $aVar = mysqli_connect('localhost','root','','ICS3104');
-    $res = mysqli_query($aVar,"INSERT INTO user(first_name,last_name,user_city,username,password) VALUES('$fn','$ln','$cityname','$uname','$pass')")or die(mysqli_error());
+    $res = mysqli_query($aVar,"INSERT INTO user(first_name,last_name,user_city,username,password) VALUES('$fn','$ln','$city','$uname','$pass')")or die(mysqli_error());
     return $res;
   }
 //check function and see if firstname and lastname exist;;;;;
@@ -188,8 +188,24 @@ class User implements Crud
     session_start();
     unset($_SESSION['username']);
     session_destroy();
-    header("Location:landpage.php");
+    header("Location:lab1.php");
   }
-}
 
+  //function to prevent logging into the system with available Username
+  public function isUserExist()
+  {
+    $uname = $this->username;
+    $aVar = mysqli_connect('localhost','root','','ICS3104');
+    // $res = mysqli_query($aVar,""or die(mysqli_error());
+    $sql = "SELECT username FROM users WHERE username LIKE '$uname'";
+    if (mysqli_query($aVar,$sql) == true)
+     {
+       ?>
+        <script type=\"text/javascript\">
+            alert "The username exists in our system";
+        </script>
+       <?php
+     }
+   }
+}
  ?>

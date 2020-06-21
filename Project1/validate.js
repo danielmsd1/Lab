@@ -7,7 +7,7 @@ function validateForm()
 
   //note that userdetails is the name of our forms
 
-  if (fname == null || lname == ""|| cityname == "")
+  if (fname == null || lname == ""|| city == "")
   {
     alert("all details required were not supplied");
     return false;
