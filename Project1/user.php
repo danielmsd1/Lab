@@ -29,7 +29,6 @@ class User implements Crud
   *static constructor
   */
 
-<<<<<<< HEAD
   //add a function to manage login activity
  public static function create_signup($firstname,$lastname,$city,$username,$password)
  {
@@ -49,13 +48,6 @@ class User implements Crud
   //   $instance = new self();
   //   return $instance;
   // }
-=======
-  public static function create()
-  {
-    $instance = new self();
-    return $instance;
-  }
->>>>>>> 78c2b8b850ed33a001185bc554026856d3f958cd
   //username setter
   public function setUsername($username)
   {
