@@ -29,6 +29,7 @@ class User implements Crud
   *static constructor
   */
 
+<<<<<<< HEAD
   //add a function to manage login activity
  public static function create_signup($firstname,$lastname,$city,$username,$password)
  {
@@ -48,6 +49,13 @@ class User implements Crud
   //   $instance = new self();
   //   return $instance;
   // }
+=======
+  public static function create()
+  {
+    $instance = new self();
+    return $instance;
+  }
+>>>>>>> 78c2b8b850ed33a001185bc554026856d3f958cd
   //username setter
   public function setUsername($username)
   {
@@ -163,6 +171,7 @@ class User implements Crud
     //inbuilt function password_hash hashes our password
     $this->password = password_hash($this->password,PASSWORD_DEFAULT);
   }
+
   public function isPasswordCorrect()
   {
     $con = new DBConnector();
@@ -183,7 +192,8 @@ class User implements Crud
 
   public function login()
   {
-    if ($this->isPasswordCorrect()) {
+    if ($this->isPasswordCorrect())
+    {
       //password is correct, so we open the protected page
       header("Location:private_page.php");
     }
@@ -200,10 +210,24 @@ class User implements Crud
     session_start();
     unset($_SESSION['username']);
     session_destroy();
-    header("Location:landpage.php");
+    header("Location:lab1.php");
   }
 
-
+  //function to prevent logging into the system with available Username
+  public function isUserExist()
+  {
+    $uname = $this->username;
+    $aVar = mysqli_connect('localhost','root','','ICS3104');
+    // $res = mysqli_query($aVar,""or die(mysqli_error());
+    $sql = "SELECT username FROM users WHERE username LIKE '$uname'";
+    if (mysqli_query($aVar,$sql) == true)
+     {
+       ?>
+        <script type=\"text/javascript\">
+            alert "The username exists in our system";
+        </script>
+       <?php
+     }
+   }
 }
-
  ?>
