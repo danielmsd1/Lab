@@ -8,7 +8,9 @@
   {
       $username = $_POST['username'];
       $password = $_POST['password'];
-      $instance = User::create();
+      // $instance = User::create();
+      $instance = User::create_login();
+      //$instance = user::create_login();
       $instance->setPassword($password);
       $instance->setUsername($username);
 

@@ -15,25 +15,39 @@ class User implements Crud
   private $username;
   private $password;
 
-  function __construct($firstname,$lastname,$city,$username,$password)
-  {
-    $this->firstname = $firstname;
-    $this->lastname = $lastname;
-    $this->city = $city;
-    $this->username = $username;
-    $this->password = $password;
-  }
+  // function __construct($firstname,$lastname,$city,$username,$password)
+  // {
+  //   $this->firstname = $firstname;
+  //   $this->lastname = $lastname;
+  //   $this->city = $city;
+  //   $this->username = $username;
+  //   $this->password = $password;
+  // }
   /**
   *PHP does not allow multiple constructors
   *We make a static method to access it with a class rather than an object
   *static constructor
   */
-  
-  public static function create()
-  {
-    $instance = new self();
-    return $instance;
-  }
+
+  //add a function to manage login activity
+ public static function create_signup($firstname,$lastname,$city,$username,$password)
+ {
+   $this->firstname = $firstname;
+   $this->lastname = $lastname;
+   $this->city = $city;
+   $this->username = $username;
+   $this->password = $password;
+ }
+ public static function create_login($username,$password)
+ {
+   $this->username = $username;
+   $this->password = $password;
+ }
+  // public static function create()
+  // {
+  //   $instance = new self();
+  //   return $instance;
+  // }
   //username setter
   public function setUsername($username)
   {
