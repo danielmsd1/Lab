@@ -99,6 +99,9 @@ if(isset($_POST['btncheck']))
             <td><input type="password" name="password" placeholder="Password" value=""> </td>
           </tr>
           <tr>
+            <td><input type="file" name="fileToUpload"> </td>
+          </tr>
+          <tr>
             <td><button class="btn btn-primary" type="submit" name="submit">SAVE</button></td>
           </tr>
           <tr>

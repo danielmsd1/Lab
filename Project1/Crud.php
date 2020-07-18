@@ -13,6 +13,7 @@
     public function removeAll();
     //addition of 2 methods for the second lab
     public function validateForm();
-    public function createFormErrorSessions();
+    public function createFormErrorSessions($problem);
+    public function isUserExist();
   }
  ?>

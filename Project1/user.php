@@ -6,7 +6,7 @@ include "authenticator.php";
  * This implements the Crud interface; Crud.php
  * All functions are implemented; otherwise an error.
  */
-class User implements Crud
+class User implements Crud,Authenticator
 {
   private $userid;
   private $firstname;
@@ -14,6 +14,8 @@ class User implements Crud
   private $city;
   private $username;
   private $password;
+  private $offset;
+	private $utc_timestamp;
 
   // function __construct($firstname,$lastname,$city,$username,$password)
   // {
@@ -87,6 +89,8 @@ class User implements Crud
     $uname = $this->username;
     $this->hashPassword();
     $pass = $this->password;
+    $pic = $this->pic;
+    $user_utc = $this->utc_timestamp;
     $aVar = mysqli_connect('localhost','root','','ICS3104');
     $res = mysqli_query($aVar,"INSERT INTO user(first_name,last_name,user_city,username,password) VALUES('$fn','$ln','$city','$uname','$pass')")or die(mysqli_error());
     return $res;
